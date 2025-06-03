@@ -1,104 +1,52 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Mukemen Downloader</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap');
+
     body {
+      font-family: 'Segoe UI', sans-serif;
       margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #f9f9f9;
-      color: #333;
-    }
-
-    header {
-      background: #111827;
-      color: #fff;
-      padding: 1rem 2rem;
-      text-align: center;
-      font-size: 1.75rem;
-      font-weight: 600;
-      letter-spacing: -0.5px;
-    }
-
-    main {
+      background-color: #1e272e;
+      color: #f5f6fa;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      padding: 2rem;
-      min-height: 80vh;
+      align-items: center;
+      min-height: 100vh;
+      flex-direction: column;
+      padding: 20px;
     }
 
-    .card {
-      background: white;
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      padding: 2rem;
-      max-width: 500px;
-      width: 100%;
-    }
-
-    .card h2 {
-      margin-top: 0;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-      font-weight: 600;
+    .header {
       text-align: center;
+      margin-bottom: 20px;
     }
 
-    input[type="text"] {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      margin-bottom: 1rem;
-      font-size: 1rem;
+    .logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      margin-bottom: 10px;
     }
 
-    button {
-      background: #2563eb;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 0.5rem;
-      font-size: 1rem;
-      font-weight: 600;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background: #1e40af;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #999;
+    .title {
+      font-family: 'Fredoka One', cursive;
+      font-size: 28px;
+      color: #00cec9;
     }
   </style>
 </head>
 <body>
-  <header>Mukemen Downloader</header>
-
-  <main>
-    <div class="card">
-      <h2>Masukkan URL Video</h2>
-      <input type="text" placeholder="https://www.youtube.com/watch?v=xxxxxx" disabled />
-      <button disabled>Download</button>
-      <p style="font-size: 0.85rem; color: #999; text-align: center; margin-top: 1rem;">
-        * Downloader saat ini hanya tampilan frontend (tidak terhubung ke backend)
-      </p>
-    </div>
-  </main>
-
-  <footer>
-    &copy; 2025 Mukemen Downloader. All rights reserved.
-  </footer>
+  <div class="header">
+    <img src="logo.png" alt="Fajar Mukemen" class="logo">
+    <div class="title">Fajar Mukemen</div>
+  </div>
+  <p>Selamat datang di Mukemen Downloader! Masukkan URL video legal untuk mengunduh.</p>
 </body>
 </html>
