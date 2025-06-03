@@ -1,302 +1,104 @@
-
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mukemen Downloader</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --main-color: #00b894;
-      --bg-color: #1e272e;
-      --container-bg: #2f3640;
-      --text-color: #f5f6fa;
-      --input-bg: #353b48;
-    }
-
-    [data-theme="light"] {
-      --main-color: #0984e3;
-      --bg-color: #f1f2f6;
-      --container-bg: #ffffff;
-      --text-color: #2d3436;
-      --input-bg: #dfe6e9;
-    }
-
-    * { box-sizing: border-box; }
-
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-      transition: background 0.3s, color 0.3s;
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #333;
     }
 
-    .container {
-      background: var(--container-bg);
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    header {
+      background: #111827;
+      color: #fff;
+      padding: 1rem 2rem;
       text-align: center;
-      width: 100%;
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      min-height: 80vh;
+    }
+
+    .card {
+      background: white;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      padding: 2rem;
       max-width: 500px;
+      width: 100%;
     }
 
-    h1 {
-      color: var(--main-color);
-      font-size: 32px;
-      margin-bottom: 10px;
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-align: center;
     }
-
-    p { margin-bottom: 20px; }
 
     input[type="text"] {
-      padding: 12px;
       width: 100%;
-      font-size: 16px;
-      border: none;
-      border-radius: 8px;
-      background: var(--input-bg);
-      color: inherit;
-      margin-bottom: 12px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1rem;
     }
 
     button {
-      background: var(--main-color);
-      color: #fff;
-      padding: 12px 24px;
+      background: #2563eb;
+      color: white;
+      padding: 0.75rem 1.5rem;
       border: none;
-      border-radius: 8px;
-      font-size: 14px;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-weight: 600;
       cursor: pointer;
-      transition: background 0.3s;
-      margin: 4px;
+      width: 100%;
+      transition: background 0.3s ease;
     }
 
     button:hover {
-      filter: brightness(90%);
-    }
-
-    .drop-area {
-      border: 2px dashed var(--main-color);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 20px;
-      background: var(--input-bg);
-      cursor: pointer;
-    }
-
-    .drop-area.dragover {
-      background: rgba(0, 184, 148, 0.2);
-    }
-
-    video {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 20px;
-      display: none;
-    }
-
-    .history {
-      text-align: left;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .theme-toggle {
-      background: transparent;
-      border: 2px solid var(--main-color);
-      color: var(--main-color);
-    }
-
-    .language-toggle {
-      font-size: 12px;
-      margin-top: 10px;
-      cursor: pointer;
+      background: #1e40af;
     }
 
     footer {
-      margin-top: 20px;
-      font-size: 12px;
-      color: #888;
-    }
-
-    .info-box {
-      background: #2d3436;
-      color: #fff;
-      padding: 10px;
-      font-size: 12px;
-      margin-top: 15px;
-      border-radius: 8px;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #999;
     }
   </style>
 </head>
-<body data-theme="dark">
-  <div class="container">
-    <h1 id="title">Mukemen Downloader</h1>
-    <p id="subtitle">Masukkan atau drag URL video dari sumber legal</p>
+<body>
+  <header>Mukemen Downloader</header>
 
-    <div class="drop-area" id="dropArea">🧲 Drag & Drop URL di sini</div>
-    <input type="text" id="videoUrl" placeholder="https://example.com/video.mp4">
-
-    <div>
-      <button onclick="previewVideo()">🎬 Preview & Download</button>
-      <button onclick="copyUrl()">🔗 Salin Link</button>
-      <button class="theme-toggle" onclick="toggleTheme()">🌗 Tema</button>
+  <main>
+    <div class="card">
+      <h2>Masukkan URL Video</h2>
+      <input type="text" placeholder="https://www.youtube.com/watch?v=xxxxxx" disabled />
+      <button disabled>Download</button>
+      <p style="font-size: 0.85rem; color: #999; text-align: center; margin-top: 1rem;">
+        * Downloader saat ini hanya tampilan frontend (tidak terhubung ke backend)
+      </p>
     </div>
+  </main>
 
-    <video id="videoPreview" controls></video>
-
-    <div class="history" id="historyContainer">
-      <strong>Riwayat Download:</strong>
-      <ul id="downloadHistory"></ul>
-    </div>
-
-    <div class="language-toggle">
-      🌍 <a href="#" onclick="switchLanguage()">Ganti ke English</a>
-    </div>
-
-    <div class="info-box" id="infoBox">
-      ⚠️ Gunakan hanya untuk mengunduh konten yang bebas hak cipta atau dengan izin.
-    </div>
-
-    <footer>Versi Web | Mukemen Project</footer>
-  </div>
-
-  <script>
-    const langs = {
-      id: {
-        title: "Mukemen Downloader",
-        subtitle: "Masukkan atau drag URL video dari sumber legal",
-        drop: "🧲 Drag & Drop URL di sini",
-        preview: "🎬 Preview & Download",
-        copy: "🔗 Salin Link",
-        theme: "🌗 Tema",
-        switch: "Ganti ke English",
-        history: "Riwayat Download:",
-        info: "⚠️ Gunakan hanya untuk mengunduh konten yang bebas hak cipta atau dengan izin."
-      },
-      en: {
-        title: "Mukemen Downloader",
-        subtitle: "Paste or drag a legal video URL (e.g. Pexels)",
-        drop: "🧲 Drag & Drop URL here",
-        preview: "🎬 Preview & Download",
-        copy: "🔗 Copy Link",
-        theme: "🌗 Theme",
-        switch: "Switch to Bahasa Indonesia",
-        history: "Download History:",
-        info: "⚠️ Use only for copyright-free or authorized content."
-      }
-    };
-
-    let currentLang = "id";
-
-    function previewVideo() {
-      const url = document.getElementById("videoUrl").value.trim();
-      const video = document.getElementById("videoPreview");
-
-      if (!isValidUrl(url)) {
-        alert("Masukkan URL video yang valid.");
-        return;
-      }
-
-      if (!url.endsWith(".mp4") && !url.endsWith(".webm")) {
-        alert("URL harus berformat .mp4 atau .webm");
-        return;
-      }
-
-      video.src = url;
-      video.style.display = "block";
-
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = '';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-
-      addToHistory(url);
-    }
-
-    function copyUrl() {
-      const input = document.getElementById("videoUrl");
-      navigator.clipboard.writeText(input.value);
-      alert("Link telah disalin!");
-    }
-
-    function toggleTheme() {
-      const body = document.body;
-      const current = body.getAttribute('data-theme');
-      body.setAttribute('data-theme', current === 'dark' ? 'light' : 'dark');
-    }
-
-    function isValidUrl(string) {
-      try {
-        new URL(string);
-        return string.startsWith("http");
-      } catch (_) {
-        return false;
-      }
-    }
-
-    function addToHistory(url) {
-      const list = document.getElementById("downloadHistory");
-      const li = document.createElement("li");
-      li.textContent = url;
-      list.appendChild(li);
-
-      let history = JSON.parse(localStorage.getItem("history") || "[]");
-      history.push(url);
-      localStorage.setItem("history", JSON.stringify(history));
-    }
-
-    function loadHistory() {
-      const list = document.getElementById("downloadHistory");
-      const history = JSON.parse(localStorage.getItem("history") || "[]");
-      history.forEach(url => {
-        const li = document.createElement("li");
-        li.textContent = url;
-        list.appendChild(li);
-      });
-    }
-
-    function switchLanguage() {
-      currentLang = currentLang === "id" ? "en" : "id";
-      const lang = langs[currentLang];
-      document.getElementById("title").textContent = lang.title;
-      document.getElementById("subtitle").textContent = lang.subtitle;
-      document.getElementById("dropArea").textContent = lang.drop;
-      document.querySelector("button[onclick='previewVideo()']").textContent = lang.preview;
-      document.querySelector("button[onclick='copyUrl()']").textContent = lang.copy;
-      document.querySelector(".theme-toggle").textContent = lang.theme;
-      document.querySelector(".language-toggle a").textContent = lang.switch;
-      document.getElementById("infoBox").textContent = lang.info;
-      document.querySelector("#historyContainer strong").textContent = lang.history;
-    }
-
-    const dropArea = document.getElementById('dropArea');
-    dropArea.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropArea.classList.add('dragover');
-    });
-    dropArea.addEventListener('dragleave', () => dropArea.classList.remove('dragover'));
-    dropArea.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropArea.classList.remove('dragover');
-      const text = e.dataTransfer.getData('text');
-      if (isValidUrl(text)) {
-        document.getElementById("videoUrl").value = text;
-      } else {
-        alert("URL tidak valid.");
-      }
-    });
-
-    loadHistory();
-  </script>
+  <footer>
+    &copy; 2025 Mukemen Downloader. All rights reserved.
+  </footer>
 </body>
 </html>
