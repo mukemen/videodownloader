@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -39,38 +40,6 @@
       font-size: 28px;
       color: #00cec9;
     }
-
-    .form {
-      margin-top: 20px;
-      width: 100%;
-      max-width: 400px;
-    }
-
-    input[type="text"] {
-      width: 100%;
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-      margin-bottom: 10px;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      font-size: 1rem;
-      font-weight: bold;
-      background-color: #00cec9;
-      border: none;
-      color: #1e272e;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #00b6b1;
-    }
   </style>
 </head>
 <body>
@@ -79,23 +48,5 @@
     <div class="title">Fajar Mukemen</div>
   </div>
   <p>Selamat datang di Mukemen Downloader! Masukkan URL video legal untuk mengunduh.</p>
-
-  <div class="form">
-    <input type="text" id="videoUrl" placeholder="Tempel link video di sini (misal: https://www.youtube.com/watch?v=xxx)">
-    <button onclick="download()">Download</button>
-  </div>
-
-  <script>
-    function download() {
-      const url = document.getElementById("videoUrl").value.trim();
-      if (!url || !url.startsWith("http")) {
-        alert("Masukkan URL video yang valid.");
-        return;
-      }
-      const safeUrl = encodeURIComponent(url);
-      const redirectLink = `https://en.savefrom.net/13RZ/#url=${safeUrl}`;
-      window.open(redirectLink, "_blank");
-    }
-  </script>
 </body>
 </html>
